@@ -4,20 +4,19 @@ package com.sreeramtraders;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        EmailSender emailSender = new Gmail();
-        emailSender.send();
+        EmailSender gmail = (from, to) -> {
+            System.out.println("Sending mail via Gmail");
+            return true;
+        };
+        EmailSender hotmail = (from, to) -> {
+            //logic
+            //var isValid:: boolean = to.contains("@");
+            //more logic
+            System.out.println("Sending mail via Hotmail");
+            return true;
+        };
 
-
-        /*
-        EmailSender praneethSender = new EmailSender() {
-            @Override
-            public void send() {
-                System.out.println("Sending Email using Praneeth mail server.....");
-            }
-        };*/
-
-        EmailSender praneethSender = () -> {    System.out.println("Gmail");   };
-
-        praneethSender.send();
+        gmail.send("gm@gmail.com","mail@mail.com");
+        hotmail.send("hm@hmail.com","mail2@mail.com");
         }
 }
